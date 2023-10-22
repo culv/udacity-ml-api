@@ -2,6 +2,7 @@ pandas
 scikit-learn
 pytest
 requests
+fastapi
 uvicorn
 gunicorn
 black
