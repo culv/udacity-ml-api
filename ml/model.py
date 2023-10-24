@@ -3,6 +3,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 RANDOM_STATE = 111
 
+
 # Optional: implement hyperparameter tuning.
 def train_model(X_train, y_train):
     """
@@ -47,7 +48,7 @@ def compute_model_metrics(y, preds):
 
 
 def inference(model, X):
-    """ Run model inferences and return the predictions.
+    """Run model inferences and return the predictions.
 
     Inputs
     ------
