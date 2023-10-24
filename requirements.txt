@@ -3,6 +3,7 @@ scikit-learn
 pytest
 requests
 fastapi
+httpx
 uvicorn
 gunicorn
 black
