@@ -7,3 +7,4 @@ httpx
 uvicorn
 gunicorn
 black
+flake8
