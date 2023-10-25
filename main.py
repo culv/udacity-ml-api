@@ -6,7 +6,7 @@ import pandas as pd
 from pydantic import BaseModel, field_validator, ValidationInfo
 
 from ml.data import process_data
-from ml.model import inference
+from ml.model import inference, load_model
 
 categorical_features = [
     "workclass",
@@ -142,8 +142,8 @@ async def hello():
 model_path = Path(__file__).parent / "model" / "model.pkl"
 encoder_path = Path(__file__).parent / "model" / "encoder.pkl"
 
-model = joblib.load(model_path)
-encoder = joblib.load(encoder_path)
+model = load_model(model_path)
+encoder = load_model(encoder_path)
 
 
 @app.post("/predict")

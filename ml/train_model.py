@@ -6,10 +6,9 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 from data import process_data
-from model import train_model, compute_model_metrics, inference
+from model import train_model, compute_model_metrics, inference, save_model
 
 data_path = Path(__file__).absolute().parent.parent / "data" / "census_CLEAN.csv"
-print(data_path)
 data = pd.read_csv(data_path)
 
 # Optional enhancement, use K-fold cross validation instead of a train-test split.
@@ -33,7 +32,7 @@ X_train, y_train, encoder, lb = process_data(
 
 # Save the encoder (we'll need it for inference)
 encoder_path = Path(__file__).absolute().parent.parent / "model" / "encoder.pkl"
-joblib.dump(encoder, encoder_path)
+save_model(encoder, encoder_path)
 
 # Proces the test data with the process_data function.
 X_test, y_test, _, _ = process_data(
@@ -53,4 +52,4 @@ print(f"{precision=}, {recall=}, {fbeta=}")
 
 # Save the model
 model_path = Path(__file__).absolute().parent.parent / "model" / "model.pkl"
-joblib.dump(model, model_path)
+save_model(model, model_path)

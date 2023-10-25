@@ -1,3 +1,4 @@
+import joblib
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.ensemble import RandomForestClassifier
 
@@ -62,3 +63,32 @@ def inference(model, X):
         Predictions from the model.
     """
     return model.predict(X)
+
+def save_model(model, fpath):
+    """Save the model as a pickle file to the given filepath.
+
+    Inputs
+    ------
+    model : sklearn.ensemble.RandomForestClassifier or sklearn.preprocessing.OneHotEncoder
+        Trained machine learning model or encoder.
+    fpath : Path
+        Location to save the model.
+    Returns
+    -------
+    """
+    joblib.dump(model, fpath)
+
+def load_model(fpath):
+    """Load the pickle file at the given filepath.
+
+    Inputs
+    ------
+    fpath : Path
+        Location to save the model.
+    Returns
+    -------
+    model : sklearn.ensemble.RandomForestClassifier or sklearn.preprocessing.OneHotEncoder
+        Trained machine learning model or encoder.
+    """
+    model = joblib.load(fpath)
+    return model
