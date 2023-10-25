@@ -8,7 +8,8 @@ from sklearn.model_selection import train_test_split
 from data import process_data
 from model import train_model, compute_model_metrics, inference
 
-data_path = Path(__file__).parent.parent / "data" / "census_CLEAN.csv"
+data_path = Path(__file__).absolute().parent.parent / "data" / "census_CLEAN.csv"
+print(data_path)
 data = pd.read_csv(data_path)
 
 # Optional enhancement, use K-fold cross validation instead of a train-test split.
@@ -17,18 +18,22 @@ train, test = train_test_split(data, test_size=0.20)
 cat_features = [
     "workclass",
     "education",
-    "marital-status",
+    "marital_status",
     "occupation",
     "relationship",
     "race",
     "sex",
-    "native-country",
+    "native_country",
 ]
 label = "salary"
 
-X_train, y_train, onehot_encoder, lb = process_data(
+X_train, y_train, encoder, lb = process_data(
     train, categorical_features=cat_features, label=label, training=True
 )
+
+# Save the encoder (we'll need it for inference)
+encoder_path = Path(__file__).absolute().parent.parent / "model" / "encoder.pkl"
+joblib.dump(encoder, encoder_path)
 
 # Proces the test data with the process_data function.
 X_test, y_test, _, _ = process_data(
@@ -36,7 +41,7 @@ X_test, y_test, _, _ = process_data(
     categorical_features=cat_features,
     label=label,
     training=False,
-    encoder=onehot_encoder,
+    encoder=encoder,
     lb=lb,
 )
 
@@ -47,5 +52,5 @@ precision, recall, fbeta = compute_model_metrics(y_pred, y_test)
 print(f"{precision=}, {recall=}, {fbeta=}")
 
 # Save the model
-model_path = Path(__file__).parent.parent / "model" / "model.pkl"
+model_path = Path(__file__).absolute().parent.parent / "model" / "model.pkl"
 joblib.dump(model, model_path)
