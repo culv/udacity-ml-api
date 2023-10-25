@@ -1,5 +1,23 @@
+import joblib
+from pathlib import Path
+
 from fastapi import FastAPI, HTTPException
+import pandas as pd
 from pydantic import BaseModel, field_validator, ValidationInfo
+
+from ml.data import process_data
+from ml.model import inference
+
+categorical_features = [
+    "workclass",
+    "education",
+    "marital_status",
+    "occupation",
+    "relationship",
+    "race",
+    "sex",
+    "native_country",
+]
 
 valid_categories = {
     "education": [
@@ -96,6 +114,7 @@ class Data(BaseModel):
                 detail=f"Received invalid field: {info.field_name}={v}. \
 {info.field_name} must be one of {valid_categories[info.field_name]}",
             )
+        return v
 
     @field_validator(*valid_numerical_ranges.keys())
     @classmethod
@@ -107,6 +126,7 @@ class Data(BaseModel):
                 detail=f"Received invalid field: {info.field_name}={v}. \
 {info.field_name} must be in the range [{min_}, {max_}]",
             )
+        return v
 
 
 app = FastAPI()
@@ -116,7 +136,17 @@ app = FastAPI()
 async def hello():
     return "Welcome to the US Census Salary Prediction API"
 
+# Load model and encoder once when the app starts up (rather than every time
+# inside the predict() function)
+model_path = Path(__file__).parent / "model" / "model.pkl"
+encoder_path = Path(__file__).parent / "model" / "encoder.pkl"
+
+model = joblib.load(model_path)
+encoder = joblib.load(encoder_path)
 
 @app.post("/predict")
 async def predict(data: Data):
-    return data
+    df = pd.DataFrame(dict(data), index=[0])
+    X, _, _, _ = process_data(df, categorical_features=categorical_features, encoder=encoder, training=False)
+    pred = inference(model, X)
+    return {"prediction": int(pred[0]), "data": data}
