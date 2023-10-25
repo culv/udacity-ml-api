@@ -1,4 +1,5 @@
 # Script to train machine learning model.
+import joblib
 from pathlib import Path
 
 import pandas as pd
@@ -23,22 +24,28 @@ cat_features = [
     "sex",
     "native-country",
 ]
-X_train, y_train, encoder, lb = process_data(
-    train, categorical_features=cat_features, label="salary", training=True
+label = "salary"
+
+X_train, y_train, onehot_encoder, lb = process_data(
+    train, categorical_features=cat_features, label=label, training=True
 )
 
 # Proces the test data with the process_data function.
 X_test, y_test, _, _ = process_data(
     test,
     categorical_features=cat_features,
-    label="salary",
+    label=label,
     training=False,
-    encoder=encoder,
+    encoder=onehot_encoder,
     lb=lb,
 )
 
-# Train and save a model.
+# Train a model
 model = train_model(X_train, y_train)
 y_pred = inference(model, X_test)
 precision, recall, fbeta = compute_model_metrics(y_pred, y_test)
 print(f"{precision=}, {recall=}, {fbeta=}")
+
+# Save the model
+model_path = Path(__file__).parent.parent / "model" / "model.pkl"
+joblib.dump(model, model_path)
