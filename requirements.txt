@@ -8,3 +8,8 @@ uvicorn
 gunicorn
 black
 flake8
+seaborn
+matplotlib
+jupyterlab
+ipython
+notebook
