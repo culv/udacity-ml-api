@@ -136,6 +136,7 @@ app = FastAPI()
 async def hello():
     return "Welcome to the US Census Salary Prediction API"
 
+
 # Load model and encoder once when the app starts up (rather than every time
 # inside the predict() function)
 model_path = Path(__file__).parent / "model" / "model.pkl"
@@ -144,9 +145,12 @@ encoder_path = Path(__file__).parent / "model" / "encoder.pkl"
 model = joblib.load(model_path)
 encoder = joblib.load(encoder_path)
 
+
 @app.post("/predict")
 async def predict(data: Data):
     df = pd.DataFrame(dict(data), index=[0])
-    X, _, _, _ = process_data(df, categorical_features=categorical_features, encoder=encoder, training=False)
+    X, _, _, _ = process_data(
+        df, categorical_features=categorical_features, encoder=encoder, training=False
+    )
     pred = inference(model, X)
     return {"prediction": int(pred[0]), "data": data}
