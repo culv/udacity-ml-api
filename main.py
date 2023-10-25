@@ -1,5 +1,21 @@
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel, field_validator
+from pydantic import BaseModel, field_validator, ValidationInfo
+
+valid_categories = {
+    "education": ['Bachelors', 'HS-grad', '11th', 'Masters', '9th', 'Some-college', 'Assoc-acdm',
+ 'Assoc-voc', '7th-8th', 'Doctorate', 'Prof-school', '5th-6th', '10th',
+ '1st-4th', 'Preschool', '12th'],
+    "marital_status": ['Never-married', 'Married-civ-spouse', 'Divorced', 'Married-spouse-absent', 'Separated', 'Married-AF-spouse', 'Widowed'],
+    "relationship": ['Not-in-family', 'Husband', 'Wife', 'Own-child', 'Unmarried', 'Other-relative'],
+    "race": ['White', 'Black', 'Asian-Pac-Islander', 'Amer-Indian-Eskimo', 'Other'],
+    "sex": ["Male", "Female"]
+}
+
+valid_numerical_ranges = {
+    "age": (0, 130),
+    "education_num": (0, 16),
+    "hours_per_week": (0, 120)
+}
 
 
 class Data(BaseModel):
@@ -41,14 +57,18 @@ class Data(BaseModel):
         }
     }
 
-    @field_validator("education")
+    @field_validator(*valid_categories.keys())
     @classmethod
-    def validate_education(cls, edu: str):
-        valid_educations = ['Bachelors', 'HS-grad', '11th', 'Masters', '9th', 'Some-college', 'Assoc-acdm',
- 'Assoc-voc', '7th-8th', 'Doctorate', 'Prof-school', '5th-6th', '10th',
- '1st-4th', 'Preschool', '12th']
-        if edu not in valid_educations:
-            raise HTTPException(status_code=444, detail=f"Received invalid field: education={edu}. education must be one of {valid_educations}")
+    def validate_categorical(cls, v: str, info: ValidationInfo):
+        if v not in valid_categories[info.field_name]:
+            raise HTTPException(status_code=444, detail=f"Received invalid field: {info.field_name}={v}. {info.field_name} must be one of {valid_categories[info.field_name]}")
+    
+    @field_validator(*valid_numerical_ranges.keys())
+    @classmethod
+    def validate_numerical_ranges(cls, v: str, info: ValidationInfo):
+        min_, max_ = valid_numerical_ranges[info.field_name]
+        if not (min_ <= v <= max_):
+            raise HTTPException(status_code=444, detail=f"Received invalid field: {info.field_name}={v}. {info.field_name} must be in the range [{min_}, {max_}]")
 
 
 app = FastAPI()
