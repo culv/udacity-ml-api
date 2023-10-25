@@ -74,3 +74,30 @@ def test_post_predict_invalid_datatypes(key, value):
     data[key] = value
     r = client.post("/predict/", json=data)
     assert r.status_code == 422
+
+@pytest.mark.parametrize(
+    "key,value,err",
+    [
+        ("education", "abc", "Received invalid field: education=abc. education must be one of ['Bachelors', 'HS-grad', '11th', 'Masters', '9th', 'Some-college', 'Assoc-acdm', 'Assoc-voc', '7th-8th', 'Doctorate', 'Prof-school', '5th-6th', '10th', '1st-4th', 'Preschool', '12th']"),
+    ],
+)
+def test_post_predict_invalid_categories(key, value, err):
+    data = {
+        "age": 39,
+        "workclass": "State-gov",
+        "fnlgt": 77516,
+        "education": "abc",
+        "education_num": 13,
+        "marital_status": "Never-married",
+        "occupation": "Adm-clerical",
+        "relationship": "Not-in-family",
+        "race": "White",
+        "sex": "Male",
+        "capital_gain": 2174,
+        "capital_loss": 0,
+        "hours_per_week": 40,
+        "native_country": "United-States",
+    }
+    data[key] = value
+    r = client.post("/predict/", json=data)
+    assert r.status_code == 444 and r.json()["detail"] == err

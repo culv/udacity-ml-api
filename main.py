@@ -1,5 +1,5 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel, field_validator
 
 
 class Data(BaseModel):
@@ -40,6 +40,15 @@ class Data(BaseModel):
             ]
         }
     }
+
+    @field_validator("education")
+    @classmethod
+    def validate_education(cls, edu: str):
+        valid_educations = ['Bachelors', 'HS-grad', '11th', 'Masters', '9th', 'Some-college', 'Assoc-acdm',
+ 'Assoc-voc', '7th-8th', 'Doctorate', 'Prof-school', '5th-6th', '10th',
+ '1st-4th', 'Preschool', '12th']
+        if edu not in valid_educations:
+            raise HTTPException(status_code=444, detail=f"Received invalid field: education={edu}. education must be one of {valid_educations}")
 
 
 app = FastAPI()
