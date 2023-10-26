@@ -6,7 +6,14 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 from data import process_data
-from model import train_model, compute_model_metrics, compute_column_slice_performance, inference, save_model, RANDOM_STATE
+from model import (
+    train_model,
+    compute_model_metrics,
+    compute_column_slice_performance,
+    inference,
+    save_model,
+    RANDOM_STATE,
+)
 
 data_path = Path(__file__).absolute().parent.parent / "data" / "census_CLEAN.csv"
 data = pd.read_csv(data_path)
