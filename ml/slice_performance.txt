@@ -1,0 +1,612 @@
+{
+    "workclass": {
+        "Private": {
+            "slice_size": 4566,
+            "precision": 0.715922107674685,
+            "recall": 0.6218905472636815,
+            "fbeta": 0.665601703940362
+        },
+        "Self-emp-not-inc": {
+            "slice_size": 521,
+            "precision": 0.7204301075268817,
+            "recall": 0.4527027027027027,
+            "fbeta": 0.5560165975103735
+        },
+        "Local-gov": {
+            "slice_size": 416,
+            "precision": 0.6981132075471698,
+            "recall": 0.5606060606060606,
+            "fbeta": 0.6218487394957982
+        },
+        "State-gov": {
+            "slice_size": 244,
+            "precision": 0.8064516129032258,
+            "recall": 0.7936507936507936,
+            "fbeta": 0.7999999999999999
+        },
+        "Federal-gov": {
+            "slice_size": 185,
+            "precision": 0.7313432835820896,
+            "recall": 0.7424242424242424,
+            "fbeta": 0.736842105263158
+        },
+        "Self-emp-inc": {
+            "slice_size": 210,
+            "precision": 0.6850393700787402,
+            "recall": 0.7767857142857143,
+            "fbeta": 0.7280334728033473
+        },
+        "?": {
+            "slice_size": 366,
+            "precision": 0.7352941176470589,
+            "recall": 0.625,
+            "fbeta": 0.6756756756756757
+        },
+        "Never-worked": {
+            "slice_size": 3,
+            "precision": 1.0,
+            "recall": 1.0,
+            "fbeta": 1.0
+        },
+        "Without-pay": {
+            "slice_size": 2,
+            "precision": 1.0,
+            "recall": 1.0,
+            "fbeta": 1.0
+        }
+    },
+    "education": {
+        "Bachelors": {
+            "slice_size": 1079,
+            "precision": 0.7419354838709677,
+            "recall": 0.7435344827586207,
+            "fbeta": 0.7427341227125941
+        },
+        "5th-6th": {
+            "slice_size": 66,
+            "precision": 1.0,
+            "recall": 0.5,
+            "fbeta": 0.6666666666666666
+        },
+        "Some-college": {
+            "slice_size": 1425,
+            "precision": 0.6359223300970874,
+            "recall": 0.51171875,
+            "fbeta": 0.5670995670995672
+        },
+        "HS-grad": {
+            "slice_size": 2153,
+            "precision": 0.5727699530516432,
+            "recall": 0.3620178041543027,
+            "fbeta": 0.44363636363636366
+        },
+        "Masters": {
+            "slice_size": 343,
+            "precision": 0.8375634517766497,
+            "recall": 0.8505154639175257,
+            "fbeta": 0.8439897698209717
+        },
+        "Assoc-voc": {
+            "slice_size": 243,
+            "precision": 0.58,
+            "recall": 0.5272727272727272,
+            "fbeta": 0.5523809523809523
+        },
+        "Prof-school": {
+            "slice_size": 113,
+            "precision": 0.8777777777777778,
+            "recall": 0.9080459770114943,
+            "fbeta": 0.8926553672316384
+        },
+        "9th": {
+            "slice_size": 97,
+            "precision": 1.0,
+            "recall": 0.2,
+            "fbeta": 0.33333333333333337
+        },
+        "12th": {
+            "slice_size": 78,
+            "precision": 0.5,
+            "recall": 0.125,
+            "fbeta": 0.2
+        },
+        "10th": {
+            "slice_size": 175,
+            "precision": 0.8,
+            "recall": 0.2857142857142857,
+            "fbeta": 0.4210526315789473
+        },
+        "1st-4th": {
+            "slice_size": 41,
+            "precision": 1.0,
+            "recall": 1.0,
+            "fbeta": 1.0
+        },
+        "11th": {
+            "slice_size": 242,
+            "precision": 0.75,
+            "recall": 0.2727272727272727,
+            "fbeta": 0.39999999999999997
+        },
+        "7th-8th": {
+            "slice_size": 126,
+            "precision": 1.0,
+            "recall": 0.4444444444444444,
+            "fbeta": 0.6153846153846153
+        },
+        "Doctorate": {
+            "slice_size": 81,
+            "precision": 0.8095238095238095,
+            "recall": 0.8947368421052632,
+            "fbeta": 0.8500000000000001
+        },
+        "Assoc-acdm": {
+            "slice_size": 245,
+            "precision": 0.6779661016949152,
+            "recall": 0.6153846153846154,
+            "fbeta": 0.6451612903225806
+        },
+        "Preschool": {
+            "slice_size": 6,
+            "precision": 0.0,
+            "recall": 1.0,
+            "fbeta": 0.0
+        }
+    },
+    "marital_status": {
+        "Never-married": {
+            "slice_size": 2106,
+            "precision": 0.8809523809523809,
+            "recall": 0.34579439252336447,
+            "fbeta": 0.4966442953020134
+        },
+        "Divorced": {
+            "slice_size": 923,
+            "precision": 0.7755102040816326,
+            "recall": 0.38,
+            "fbeta": 0.5100671140939598
+        },
+        "Married-civ-spouse": {
+            "slice_size": 2994,
+            "precision": 0.7077045274027005,
+            "recall": 0.670933734939759,
+            "fbeta": 0.688828759180518
+        },
+        "Separated": {
+            "slice_size": 209,
+            "precision": 0.75,
+            "recall": 0.42857142857142855,
+            "fbeta": 0.5454545454545454
+        },
+        "Widowed": {
+            "slice_size": 194,
+            "precision": 1.0,
+            "recall": 0.25,
+            "fbeta": 0.4
+        },
+        "Married-spouse-absent": {
+            "slice_size": 82,
+            "precision": 1.0,
+            "recall": 0.8,
+            "fbeta": 0.888888888888889
+        },
+        "Married-AF-spouse": {
+            "slice_size": 5,
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0
+        }
+    },
+    "occupation": {
+        "Prof-specialty": {
+            "slice_size": 821,
+            "precision": 0.7716535433070866,
+            "recall": 0.7903225806451613,
+            "fbeta": 0.7808764940239042
+        },
+        "Sales": {
+            "slice_size": 745,
+            "precision": 0.6892655367231638,
+            "recall": 0.580952380952381,
+            "fbeta": 0.6304909560723514
+        },
+        "Other-service": {
+            "slice_size": 635,
+            "precision": 1.0,
+            "recall": 0.2,
+            "fbeta": 0.33333333333333337
+        },
+        "Adm-clerical": {
+            "slice_size": 796,
+            "precision": 0.5609756097560976,
+            "recall": 0.46464646464646464,
+            "fbeta": 0.5082872928176796
+        },
+        "Craft-repair": {
+            "slice_size": 816,
+            "precision": 0.556390977443609,
+            "recall": 0.43529411764705883,
+            "fbeta": 0.4884488448844884
+        },
+        "Exec-managerial": {
+            "slice_size": 806,
+            "precision": 0.7653333333333333,
+            "recall": 0.7572559366754618,
+            "fbeta": 0.7612732095490715
+        },
+        "Protective-serv": {
+            "slice_size": 124,
+            "precision": 0.7307692307692307,
+            "recall": 0.4523809523809524,
+            "fbeta": 0.5588235294117647
+        },
+        "Machine-op-inspct": {
+            "slice_size": 384,
+            "precision": 0.7142857142857143,
+            "recall": 0.425531914893617,
+            "fbeta": 0.5333333333333333
+        },
+        "Farming-fishing": {
+            "slice_size": 218,
+            "precision": 0.8125,
+            "recall": 0.4482758620689655,
+            "fbeta": 0.5777777777777777
+        },
+        "?": {
+            "slice_size": 369,
+            "precision": 0.7352941176470589,
+            "recall": 0.625,
+            "fbeta": 0.6756756756756757
+        },
+        "Priv-house-serv": {
+            "slice_size": 27,
+            "precision": 1.0,
+            "recall": 1.0,
+            "fbeta": 1.0
+        },
+        "Transport-moving": {
+            "slice_size": 322,
+            "precision": 0.75,
+            "recall": 0.43478260869565216,
+            "fbeta": 0.5504587155963303
+        },
+        "Tech-support": {
+            "slice_size": 199,
+            "precision": 0.6379310344827587,
+            "recall": 0.6379310344827587,
+            "fbeta": 0.6379310344827587
+        },
+        "Handlers-cleaners": {
+            "slice_size": 251,
+            "precision": 0.6666666666666666,
+            "recall": 0.19047619047619047,
+            "fbeta": 0.2962962962962963
+        }
+    },
+    "relationship": {
+        "Not-in-family": {
+            "slice_size": 1646,
+            "precision": 0.8289473684210527,
+            "recall": 0.3888888888888889,
+            "fbeta": 0.5294117647058824
+        },
+        "Wife": {
+            "slice_size": 319,
+            "precision": 0.7266187050359713,
+            "recall": 0.6558441558441559,
+            "fbeta": 0.689419795221843
+        },
+        "Husband": {
+            "slice_size": 2634,
+            "precision": 0.7063563115487914,
+            "recall": 0.6732081911262798,
+            "fbeta": 0.689384010484928
+        },
+        "Other-relative": {
+            "slice_size": 185,
+            "precision": 0.6666666666666666,
+            "recall": 0.25,
+            "fbeta": 0.36363636363636365
+        },
+        "Own-child": {
+            "slice_size": 1004,
+            "precision": 1.0,
+            "recall": 0.26666666666666666,
+            "fbeta": 0.4210526315789474
+        },
+        "Unmarried": {
+            "slice_size": 725,
+            "precision": 0.782608695652174,
+            "recall": 0.32727272727272727,
+            "fbeta": 0.46153846153846156
+        }
+    },
+    "race": {
+        "White": {
+            "slice_size": 5507,
+            "precision": 0.7147514262428688,
+            "recall": 0.6246438746438746,
+            "fbeta": 0.6666666666666666
+        },
+        "Black": {
+            "slice_size": 684,
+            "precision": 0.7534246575342466,
+            "recall": 0.5978260869565217,
+            "fbeta": 0.6666666666666666
+        },
+        "Asian-Pac-Islander": {
+            "slice_size": 208,
+            "precision": 0.7254901960784313,
+            "recall": 0.6607142857142857,
+            "fbeta": 0.6915887850467289
+        },
+        "Amer-Indian-Eskimo": {
+            "slice_size": 57,
+            "precision": 1.0,
+            "recall": 0.5,
+            "fbeta": 0.6666666666666666
+        },
+        "Other": {
+            "slice_size": 57,
+            "precision": 0.625,
+            "recall": 0.625,
+            "fbeta": 0.625
+        }
+    },
+    "sex": {
+        "Female": {
+            "slice_size": 2187,
+            "precision": 0.7325581395348837,
+            "recall": 0.5338983050847458,
+            "fbeta": 0.6176470588235294
+        },
+        "Male": {
+            "slice_size": 4326,
+            "precision": 0.7151260504201681,
+            "recall": 0.6398496240601503,
+            "fbeta": 0.6753968253968254
+        }
+    },
+    "native_country": {
+        "United-States": {
+            "slice_size": 5828,
+            "precision": 0.7190283400809716,
+            "recall": 0.6222845129642607,
+            "fbeta": 0.667167543200601
+        },
+        "Mexico": {
+            "slice_size": 132,
+            "precision": 0.6,
+            "recall": 0.375,
+            "fbeta": 0.4615384615384615
+        },
+        "Guatemala": {
+            "slice_size": 14,
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0
+        },
+        "?": {
+            "slice_size": 131,
+            "precision": 0.8275862068965517,
+            "recall": 0.7058823529411765,
+            "fbeta": 0.7619047619047619
+        },
+        "El-Salvador": {
+            "slice_size": 19,
+            "precision": 1.0,
+            "recall": 1.0,
+            "fbeta": 1.0
+        },
+        "Japan": {
+            "slice_size": 18,
+            "precision": 0.7142857142857143,
+            "recall": 0.7142857142857143,
+            "fbeta": 0.7142857142857143
+        },
+        "Germany": {
+            "slice_size": 22,
+            "precision": 1.0,
+            "recall": 0.8333333333333334,
+            "fbeta": 0.9090909090909091
+        },
+        "Cambodia": {
+            "slice_size": 3,
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0
+        },
+        "Vietnam": {
+            "slice_size": 19,
+            "precision": 0.0,
+            "recall": 1.0,
+            "fbeta": 0.0
+        },
+        "China": {
+            "slice_size": 20,
+            "precision": 0.8,
+            "recall": 0.6666666666666666,
+            "fbeta": 0.7272727272727272
+        },
+        "Haiti": {
+            "slice_size": 10,
+            "precision": 0.5,
+            "recall": 0.5,
+            "fbeta": 0.5
+        },
+        "Columbia": {
+            "slice_size": 11,
+            "precision": 0.0,
+            "recall": 1.0,
+            "fbeta": 0.0
+        },
+        "Poland": {
+            "slice_size": 14,
+            "precision": 0.3333333333333333,
+            "recall": 0.3333333333333333,
+            "fbeta": 0.3333333333333333
+        },
+        "Dominican-Republic": {
+            "slice_size": 18,
+            "precision": 1.0,
+            "recall": 1.0,
+            "fbeta": 1.0
+        },
+        "Puerto-Rico": {
+            "slice_size": 9,
+            "precision": 0.5,
+            "recall": 1.0,
+            "fbeta": 0.6666666666666666
+        },
+        "Iran": {
+            "slice_size": 11,
+            "precision": 0.5,
+            "recall": 0.5,
+            "fbeta": 0.5
+        },
+        "India": {
+            "slice_size": 24,
+            "precision": 0.7777777777777778,
+            "recall": 0.7,
+            "fbeta": 0.7368421052631577
+        },
+        "Peru": {
+            "slice_size": 5,
+            "precision": 1.0,
+            "recall": 1.0,
+            "fbeta": 1.0
+        },
+        "Nicaragua": {
+            "slice_size": 5,
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0
+        },
+        "England": {
+            "slice_size": 19,
+            "precision": 0.875,
+            "recall": 0.7777777777777778,
+            "fbeta": 0.823529411764706
+        },
+        "Philippines": {
+            "slice_size": 36,
+            "precision": 0.9166666666666666,
+            "recall": 0.8461538461538461,
+            "fbeta": 0.8799999999999999
+        },
+        "Cuba": {
+            "slice_size": 23,
+            "precision": 0.6666666666666666,
+            "recall": 0.4,
+            "fbeta": 0.5
+        },
+        "Italy": {
+            "slice_size": 10,
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0
+        },
+        "South": {
+            "slice_size": 15,
+            "precision": 0.0,
+            "recall": 1.0,
+            "fbeta": 0.0
+        },
+        "Canada": {
+            "slice_size": 32,
+            "precision": 0.5555555555555556,
+            "recall": 0.625,
+            "fbeta": 0.5882352941176471
+        },
+        "Taiwan": {
+            "slice_size": 9,
+            "precision": 0.8333333333333334,
+            "recall": 1.0,
+            "fbeta": 0.9090909090909091
+        },
+        "France": {
+            "slice_size": 4,
+            "precision": 0.6666666666666666,
+            "recall": 1.0,
+            "fbeta": 0.8
+        },
+        "Ecuador": {
+            "slice_size": 2,
+            "precision": 0.5,
+            "recall": 1.0,
+            "fbeta": 0.6666666666666666
+        },
+        "Greece": {
+            "slice_size": 7,
+            "precision": 0.0,
+            "recall": 1.0,
+            "fbeta": 0.0
+        },
+        "Scotland": {
+            "slice_size": 2,
+            "precision": 1.0,
+            "recall": 1.0,
+            "fbeta": 1.0
+        },
+        "Trinadad&Tobago": {
+            "slice_size": 4,
+            "precision": 1.0,
+            "recall": 1.0,
+            "fbeta": 1.0
+        },
+        "Thailand": {
+            "slice_size": 2,
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0
+        },
+        "Outlying-US(Guam-USVI-etc)": {
+            "slice_size": 5,
+            "precision": 1.0,
+            "recall": 1.0,
+            "fbeta": 1.0
+        },
+        "Portugal": {
+            "slice_size": 5,
+            "precision": 1.0,
+            "recall": 0.5,
+            "fbeta": 0.6666666666666666
+        },
+        "Jamaica": {
+            "slice_size": 11,
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0
+        },
+        "Honduras": {
+            "slice_size": 3,
+            "precision": 1.0,
+            "recall": 1.0,
+            "fbeta": 1.0
+        },
+        "Hong": {
+            "slice_size": 2,
+            "precision": 1.0,
+            "recall": 1.0,
+            "fbeta": 1.0
+        },
+        "Hungary": {
+            "slice_size": 3,
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0
+        },
+        "Yugoslavia": {
+            "slice_size": 2,
+            "precision": 0.0,
+            "recall": 1.0,
+            "fbeta": 0.0
+        },
+        "Laos": {
+            "slice_size": 4,
+            "precision": 1.0,
+            "recall": 1.0,
+            "fbeta": 1.0
+        }
+    }
+}
