@@ -50,14 +50,38 @@ def compute_model_metrics(y, preds):
 
 
 def compute_column_slice_performance(model, X, y, df, column):
+    """
+    Validates the trained machine learning model using precision, recall, and F1
+    on every slice of the given categorical column
+
+    Inputs
+    ------
+    model: sklearn.ensemble.RandomForestClassifier
+        Trained machine learning model.
+    X : np.array
+        Data used for prediction.
+    y : np.array
+        Known labels, binarized.
+    df: pd.DataFrame
+        The corresponding raw data that goes along with X and y
+    column: str
+        The name of a categorical feature
+    Returns
+    -------
+    column_slice_perf: Dict[str, Dict[str, float]]
+        A dictionary of the performance (precision, recall, F1) on every
+        slice of the given column
+    """
     # First make sure the dataframe index is a RangeIndex going from 0 to len(df)-1
     df_ = df.copy()
     df_.reset_index(drop=True, inplace=True)
 
     # Next make sure X and df have the same length
     if X.shape[0] != df_.shape[0]:
-        raise Exception(f"Expected processed data X and original dataframe df to have \
-the same length. Got {X.shape[0]=} and {df.shape[0]=}")
+        raise Exception(
+            f"Expected processed data X and original dataframe df to have \
+the same length. Got {X.shape[0]=} and {df.shape[0]=}"
+        )
 
     # Start by getting unique values for the column
     slices = df_[column].unique().tolist()
@@ -71,9 +95,15 @@ the same length. Got {X.shape[0]=} and {df.shape[0]=}")
         # Compute metrics on the slice
         y_pred = model.predict(X_slice)
         prec, recall, fbeta = compute_model_metrics(y_slice, y_pred)
-        column_slice_perf[slice_] = {"slice_size": X_slice.shape[0], "precision": prec, "recall": recall, "fbeta": fbeta}
+        column_slice_perf[slice_] = {
+            "slice_size": X_slice.shape[0],
+            "precision": prec,
+            "recall": recall,
+            "fbeta": fbeta,
+        }
 
     return column_slice_perf
+
 
 def inference(model, X):
     """Run model inferences and return the predictions.
@@ -91,12 +121,14 @@ def inference(model, X):
     """
     return model.predict(X)
 
+
 def save_model(model, fpath):
     """Save the model as a pickle file to the given filepath.
 
     Inputs
     ------
-    model : sklearn.ensemble.RandomForestClassifier or sklearn.preprocessing.OneHotEncoder
+    model : sklearn.ensemble.RandomForestClassifier or
+            sklearn.preprocessing.OneHotEncoder
         Trained machine learning model or encoder.
     fpath : Path
         Location to save the model.
@@ -104,6 +136,7 @@ def save_model(model, fpath):
     -------
     """
     joblib.dump(model, fpath)
+
 
 def load_model(fpath):
     """Load the pickle file at the given filepath.
@@ -114,7 +147,8 @@ def load_model(fpath):
         Location to save the model.
     Returns
     -------
-    model : sklearn.ensemble.RandomForestClassifier or sklearn.preprocessing.OneHotEncoder
+    model : sklearn.ensemble.RandomForestClassifier or
+            sklearn.preprocessing.OneHotEncoder
         Trained machine learning model or encoder.
     """
     model = joblib.load(fpath)
